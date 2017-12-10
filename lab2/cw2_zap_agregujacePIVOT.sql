@@ -68,10 +68,10 @@ ON CC.CUSTOMER_ID=O.CUSTOMER_ID)
 ORDER BY S_ID;
 */
 6. Zbuduj zapytanie z klauzulą UNPIVOT, które przekształci dane perspektywy SREDNIE_PIVOT do układu wierszowego.
-/*V1 ------- do zrobienia
+/*V1
 SELECT * FROM(
 (SELECT s_ID, FEMALE, MALE FROM SREDNIE_PIVOT_5 SP)
 UNPIVOT( (SREDNIA)
-FOR GENDER3 IN (FEMALE2 AS 'FEMALE3', MALE2 AS 'MALE3')
+FOR GENDER3 IN (FEMALE AS 'FEMALE3', MALE AS 'MALE3')
 ));
 */
