@@ -1,0 +1,78 @@
+A. Przeanalizuj wszystkie przykłady funkcji analitycznych z prezentacji na wykładzie.
+B. Dla tabel ze schematów SH opracuj poniższe zapytania.
+C. Następnie przygotuj samodzielnie po 1 zapytaniu dla każdej funkcji.
+
+===A - Funkcje okna
+1. Policz, ile razy był sprzedawany produkt o identyfikatorze 140.
+NAGŁÓWKI:
+  ILOSC_SPRZEDAZY
+/*V1
+*/
+2. Poznaj szczegółowy rozkład sprzedaży produktu o identyfikatorze 140 , z podziałem na kwartały i
+nazwij kolumnę ILOSC_SPRZEDAZY _W_KWARTALE. Wylicz też narastającą ilość sprzedaży
+tego produktu od samego początku i nazwij kolumnę ILOSC_SPRZEDAZY_OD_POCZATKU
+NAGŁÓWKI:
+  ROK
+  KWARTAL
+  ILOSC_SPRZEDAZY _W_KWARTALE
+  ILOSC_SPRZEDAZY_OD_POCZATKU
+/*V1
+*/
+3. W wyniku zadania 2. zastąp kolumnę ILOSC_SPRZEDAZY_OD_POCZATKU kolumną, która
+pokaże ilość sprzedaży w roku kalendarzowym i nazwiją ILOSC_SPRZEDAZY_W_ROKU.
+NAGŁÓWKI:
+  ROK
+  KWARTAL
+  ILOSC_SPRZEDAZY _W_KWARTALE
+  ILOSC_SPRZEDAZY_ W_ROKU
+/*V1
+*/
+4. Tym razem chcemy poddać analizie kwoty wydawane przez klientów. Podaj zapytanie, które
+pokaże sumaryczną kwotę wydaną przez klienta w rozbiciu na kolejne lata kalendarzowe (pobierz
+rok z daty sprzedaży, użyj funkcji EXTRACT(YEAR FROM <data>)).
+NAGŁÓWKI:
+  ROK
+  RAZEM_W_ROKU
+/*V1
+*/
+5. Dodaj do poprzedniego wyniku kolumnę, która pokaże udział procentowy wydatków
+w danym roku do całkowitej sumy wydatków. Do wyznaczenia całkowitej sumy wydaków użyj
+funkcji okna (o zakresie obejmującym wszystkie rekordy okna).
+NAGŁÓWKI:
+  ROK
+  RAZEM_W_ROKU
+  PROCENT_CALOSCI
+/*V1
+*/
+6. Rozwiąż poprzednie zadanie, tym razem użyj funkcji LAST_VALUE na wyniku będącym
+półkostką danych (użyj klauzuli ROLLUP). Wskazówka: zbuduj najpierw zapytanie wyliczające
+półkostkę danych, następnie dodaj do zapytania funkcję analityczną, w której do wyliczenia
+procentu będziesz brał/a wartość dla podsumowania półkostki.
+NAGŁÓWKI:
+  ROK
+  RAZEM_W_ROKU
+  PROCENT_CALOSCI
+/*V1
+*/
+7. Tym razem interesują nas szczegółowe kwoty przychodów w 2000 roku. Na początek zbuduj
+zapytanie, które dla każdej podkategorii wyświetli sumę przychodów od klientów kupujących w
+tej kategorii w 2000 roku oraz pokaże sumaryczną kwotę przychodów w 2000 roku.
+NAGŁÓWKI:
+  PODKAtEGORIA
+  SUMA_DLA_PODKATEGORII
+Następne zapytanie ma wyświetlić identyfikator produktu wraz z kwotą przychodów,
+podkategorią, do której należy produkt, sumaryczną kwotę przychodów w 2000 roku produktów
+w tej samej podkategorii co aktualny produkt (wskazówka: zastosuj partycjonowanie
+danych, na których będzie działała funkcja sumująca przychody, wg podkategorii produktów ),
+jaki procent sumy przychodów dla podkategorii stanowią przychody produktu oraz jaki procent
+całkowitej sumy przychodów w 2000 roku przychodów stanowi przychód produktu. Przy
+wyliczeniach zastosuj funkcje okna.
+NAGŁÓWKI:
+  PROD_ID
+  KWOTA
+  PODKATEGORIA
+  SUMA_DLA_PODKATEGORII
+  PROCENT_PODKATEGORII
+  PROCENT_CALOSCI
+/*V1
+*/
