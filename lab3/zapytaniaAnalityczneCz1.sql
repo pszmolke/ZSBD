@@ -20,7 +20,8 @@ pierwszych podkategorii w rankingu (weź pod uwagę ranking zwykły).
 /*V1
 SELECT * FROM (
   SELECT PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID, COUNT(*),
-  RANK() OVER(ORDER BY COUNT(*) DESC) RANKING
+  RANK() OVER(ORDER BY COUNT(*) DESC) RANKING,
+  DENSE_RANK() OVER(ORDER BY COUNT(*) DESC) RANKING_DENSE
   FROM H_PRODUCTS
   GROUP BY (PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID))
 WHERE RANKING < 4;
@@ -45,10 +46,31 @@ GROUP BY (PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID);
 */
 6. Zmodyfikuj zapytanie z punktu poprzedniego w taki sposób, aby otrzymać informacje o podkategoriach, 
 które lokują się w 25% najliczniej obsadzonych podkategorii.
+/*V1
+WITH RANKING_TAB AS (
+  SELECT PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID, COUNT(*),
+  ROUND(PERCENT_RANK() OVER(ORDER BY COUNT(*) DESC),2) AS RANKING
+  FROM H_PRODUCTS
+  GROUP BY (PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID))
+SELECT * FROM RANKING_TAB
+WHERE RANKING < 0.25;
+*/
 7. Dodaj do wyniku zadania 6. kolumnę wyliczającą percentyle (funkcja CUME_DIST). Porównaj wyniki uzyskane 
 w kolumnach RANKING_PROC i PERCENTYL.
+WITH RANKING_TAB AS (
+/*V1
+WITH RANKING_TAB AS (
+  SELECT PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID, COUNT(*),
+  ROUND(PERCENT_RANK() OVER(ORDER BY COUNT(*) DESC),2) AS RANKING,
+  CUME_DIST() OVER(ORDER BY COUNT(*) DESC) AS PERCENTYL
+  FROM H_PRODUCTS
+  GROUP BY (PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID))
+SELECT * FROM RANKING_TAB
+WHERE RANKING < 0.25;
+*/
 8. Podaj hipotetyczną pozycję w rankingu podkategorii, która zawiera dokładnie 9 produktów. Użyj rankingu 
 zwykłego.
+
 9. Przydziel każdej pozycji w rankingu podkategorii z punktu 1. unikalny numer porządkowy (wykorzystaj 
 funkcję ROW_NUMBER). Porównaj numer porządkowy rekordu z pozycją w rankingu.
 10. Podziel podkategorie na cztery "koszyki" w zależności od ich pozycji w rankingu zbudowanym wg 
