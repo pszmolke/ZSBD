@@ -1,0 +1,93 @@
+===C - Pozostałe funkcje analityczne
+W niniejszym ćwiczeniu zapoznamy się z pozostałymi funkcjami analitycznymi: LAG i LEAD,
+LISTAGG, FIRST i LAST, PERCENTILE_DESC i PERCENTILE_CONT oraz
+WIDTH_BUCKET.
+
+1. Dla produktu o identyfikatorze 140 wylicz sumę sprzedaży, jaką uzyskał w poszczególnych
+latach. Uzupełnij wynik o wskazanie, o ile w danym roku wzrosła/zmalała średnia w
+stosunku do roku poprzedniego (użyj funkcji LAG).
+NAGŁÓWKI:
+  ROK
+  SREDNIA_W_ROKU
+  PRZYROST_SPADEK
+/*V1
+*/
+2. Ponownie zanalizuj przychody względem produktów. Podaj zapytanie, które pokaże
+sumaryczną kwotę oraz liczbę sprzedaży produktów w rozbiciu na kolejne lata
+kalendarzowe (pobierz rok z daty sprzedaży, użyj funkcji EXTRACT(YEAR FROM
+<data>)). Dodaj kolumnę, która pokaże procentowy wzrost/spadek kwoty i liczby
+przychodów w danym roku kalendarzowym w stosunku do roku poprzedniego.
+NAGŁÓWKI:
+  ROK
+  SUMA_W_ROKU
+  ZMIANA
+  KWOT%
+  LICZBA_W_ROKU
+  ZMIANA
+  LICZBY%
+/*V1
+*/
+3. Ponownie zanalizujemy przychody produktów, tym razem używając funkcji FIRST i
+LAST. Na początek zbuduj zapytanie, które dla każdego produktu wypisze jego
+identyfikator, symbol podkategorii , do jakiej należy oraz wyliczy jego sumę przychodów
+(zastosuj zwykłe grupowanie).
+NAGŁÓWKI:
+  PROD_ID
+  PODKATEGORIA
+  SUMA_PRODUKTU
+/*V1
+*/
+4. Rozbuduj zapytanie z poprzedniego punktu w taki sposób, aby dla każdego produktu
+wyliczyło jego Sumę przychodów, wyświetliło jego identyfikator i podkategorię ora sumę
+najlepszego produktu w danej kategorii i identyfikator produktu z najlepszą sumą na
+kategorii (użyj funkcji FIRST jako agregującej funkcji raportującej).
+NAGŁÓWKI:
+  PROD_ID
+  PODKAT
+  SUMA_PRZYCH
+  PROD_Z_MAKS_SUM_PODKAT
+  MAKS_SUMA_W_PODKAT
+/*V1
+*/
+5. Do wyniku poprzedniego zapytania dodaj ostatnią kolumnę MAKS_SREDNIA, która
+wyświetli maksymalną sumę przychodów wśród wszystkich produktów .
+/*V1
+*/
+6. Zbuduj zapytanie, które dla każdej podkategorii produktów wyświetli jej symbol oraz
+symbol kategorii prioduktów, do której dana podaktegoria należy.
+NAGŁÓWKI:
+  KATEGORIA
+  PODKATEGORIA
+Następnie przekształć zapytanie w taki sposób, aby symbole w ramach KATEGORII były
+wyświetlone w postaci listy.
+NAGŁÓWKI:
+  KATEGORIA
+  PODKAT_LISTA
+/*V1
+*/
+7. Zbuduj ranking podkategorii ze względu na sumaryczne przychody produktów na
+podkategorii. Następnie wyznacz medianę powstałego rankingu. Porównaj wyniki funkcji
+odwróconych percentyli: dyskretną i ciągłą.
+NAGŁÓWKI:
+  PODKATEGORIA
+  SUMA_PRZYCHODOW
+  RANKING
+NAGŁÓWKI:
+  MEDIANA_DYSKRETNIA
+  MEDIANA_CIAGLA
+/*V1
+*/
+8. Zbuduj zapytanie, które ponownie wyliczy sumy przychodów produktu. Następnie
+uzupełnij zapytanie o wyrażenie, które przydzieli każdy produkt do jednej równych z
+czterech grup w zależności od uzyskanej sumy:
+· grupa 1 . – sumy większe bądź równe …. i mniejsze od …..,
+· grupa 2. – sumy większe bądź równe …. i mniejsze od …..,
+· grupa 3. – sumy większe bądź równe …. i mniejsze od …..,
+· grupa 4. – sumy większe od …..,
+Użyj funkcji WIDTH_BUCKET.
+NAGŁÓWKI:
+  PROD
+  SUMA
+  GRUPA
+/*V1
+*/
