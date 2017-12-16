@@ -1,6 +1,6 @@
-## ĆWICZENIE 4– ZAAWANSOWANA ANALITYKA
+# ĆWICZENIE 4– ZAAWANSOWANA ANALITYKA
 
-# CZ.3 – POZOSTAŁE FUNKCJE ANALITYCZNE
+## CZ.3 – POZOSTAŁE FUNKCJE ANALITYCZNE
 
 * A. Przeanalizuj wszystkie przykłady funkcji analitycznych z prezentacji na wykładzie
 * B. Dla tabel ze schematów SH opracuj poniższe zapytania
