@@ -1,0 +1,55 @@
+===B - Funkcje raportujące
+1. Zbuduj zapytanie, które dla każdego produktu, należącego do podkategorii o symbolu ….
+wypisze jego identyfikator, symbol podkategorii, do jakiej należy produkt oraz wyliczy jego
+kwotę przychodów (zastosuj zwykłe grupowanie).
+NAGŁÓWKI:
+  PROD_ID
+  PODKATEGORIA
+  SUMA_PRZYCHODÓW
+Wyświetl również maksymalne sumy przychodów dla poszczególnych kategorii.
+  NAGŁÓWKI:
+  PODKATEGORIA
+  MAKS_SUMA_PRZYCHODÓW
+/*V1
+*/
+2. Rozbuduj zapytanie z punktu 1. o kolumnę pokazującą maksymalną sumę przychodów wśród
+produktów dla podkategorii, do której należy bieżący produkt
+NAGŁÓWKI:
+  PROD_ID
+  PODKATEGORIA
+  SUMA_PRZYCHODÓW
+  MAKS_SUMA_PODKATEGORI
+/*V1
+*/
+3. Ponownie rozszerz zapytanie z punktu poprzedniego, tym razem w taki sposób, aby uzyskać
+kolumnę wyświetlającą maksymalną sumę przychodów wśród wszystkich produktów
+należących do kategorii o symbolu ….. (w tym wypadku będzie to najwyższa suma wśród
+wszystkich wyszukanych produktów).
+NAGŁÓWKI:
+  PROD_ID
+  PODKATEGORIA
+  SUMA_PRZYCHODÓW
+  MAKS_SUMA_PODKATEGORI
+  MAKS_DLA_KATEGORII
+/*V1
+*/
+4. Ponownie wykonaj zadanie 7 z poprzedniego ćwiczenia, tym razem zastosuj funkcje
+raportujące.
+/*V1
+*/
+5. Przygotuj raport, który policzy ile produktów należy do poszczególnych podkategorii
+produktów.
+NAGŁÓWKI:
+  PODKATEGORIA
+  LICZBA_PRODUKTOW
+/*V1
+*/
+6. Rozszerz zapytanie z poprzedniego zadania tak, aby otrzymać symbol kategorii dla podkategorii
+oraz procent liczby produktów danej podkategorii w liczbie produktów na danej kategorii.
+NAGŁÓWKI:
+  PODKATEGORIA
+  LICZBA_PRODUKTOW
+  KATEGORIA
+  %KAT
+/*V1
+*/
