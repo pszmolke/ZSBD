@@ -70,8 +70,25 @@ WHERE RANKING < 0.25;
 */
 8. Podaj hipotetyczną pozycję w rankingu podkategorii, która zawiera dokładnie 9 produktów. Użyj rankingu 
 zwykłego.
+/*V1
+SELECT PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID, COUNT(*),
+RANK() OVER(ORDER BY COUNT(*) DESC) RANKING
+FROM H_PRODUCTS
+GROUP BY (PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID);
 
+SELECT RANK(9) WITHIN GROUP
+  (ORDER BY COUNT(*) DESC) AS POSITION
+FROM H_PRODUCTS
+GROUP BY (PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID);
+*/
 9. Przydziel każdej pozycji w rankingu podkategorii z punktu 1. unikalny numer porządkowy (wykorzystaj 
 funkcję ROW_NUMBER). Porównaj numer porządkowy rekordu z pozycją w rankingu.
+/*V1
+SELECT PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID, COUNT(*),
+RANK() OVER(ORDER BY COUNT(*) DESC) RANKING,
+ROW_NUMBER() OVER(ORDER BY COUNT(*) DESC) AS ROW_NUMBER
+FROM H_PRODUCTS
+GROUP BY (PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID);
+*/
 10. Podziel podkategorie na cztery "koszyki" w zależności od ich pozycji w rankingu zbudowanym wg 
 liczby produktów. W każdym koszyku powinno znaleźć się tyle samo podkategorii (liczby podkategorii w poszczególnych koszykach mogą się różnić o co najwyżej 1).
