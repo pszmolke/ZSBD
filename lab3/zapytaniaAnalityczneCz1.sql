@@ -91,4 +91,5 @@ FROM H_PRODUCTS
 GROUP BY (PROD_SUBCATEGORY,PROD_SUBCATEGORY_ID);
 */
 10. Podziel podkategorie na cztery "koszyki" w zależności od ich pozycji w rankingu zbudowanym wg 
-liczby produktów. W każdym koszyku powinno znaleźć się tyle samo podkategorii (liczby podkategorii w poszczególnych koszykach mogą się różnić o co najwyżej 1).
+liczby produktów. W każdym koszyku powinno znaleźć się tyle samo podkategorii (liczby podkategorii 
+w poszczególnych koszykach mogą się różnić o co najwyżej 1).
