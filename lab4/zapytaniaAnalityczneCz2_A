@@ -7,6 +7,9 @@ C. Następnie przygotuj samodzielnie po 1 zapytaniu dla każdej funkcji.
 NAGŁÓWKI:
   ILOSC_SPRZEDAZY
 /*V1
+SELECT SUM(QUANTITY_SOLD) AS ILOSC_SPRZEDAZY
+FROM H_SALES
+WHERE PROD_ID=140;
 */
 2. Poznaj szczegółowy rozkład sprzedaży produktu o identyfikatorze 140 , z podziałem na kwartały i
 nazwij kolumnę ILOSC_SPRZEDAZY _W_KWARTALE. Wylicz też narastającą ilość sprzedaży
@@ -17,6 +20,16 @@ NAGŁÓWKI:
   ILOSC_SPRZEDAZY _W_KWARTALE
   ILOSC_SPRZEDAZY_OD_POCZATKU
 /*V1
+SELECT
+  T.CALENDAR_QUARTER_DESC AS KWARTAL,
+  SUM(S.QUANTITY_SOLD) AS ILOSC_SPRZEDAZY_W_KWARTALE,
+  SUM(SUM(S.QUANTITY_SOLD)) OVER (ORDER BY CALENDAR_QUARTER_DESC ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
+  AS ILOSC_SPRZEDAZY_OD_POCZATKU
+FROM H_SALES S JOIN H_TIMES T ON S.TIME_ID = T.TIME_ID
+WHERE S.PROD_ID=140
+GROUP BY T.CALENDAR_QUARTER_DESC
+ORDER BY KWARTAL;
+
 */
 3. W wyniku zadania 2. zastąp kolumnę ILOSC_SPRZEDAZY_OD_POCZATKU kolumną, która
 pokaże ilość sprzedaży w roku kalendarzowym i nazwiją ILOSC_SPRZEDAZY_W_ROKU.
